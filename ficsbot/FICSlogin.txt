@@ -1,0 +1,36 @@
+Schtoggfischli
+
+set style 12
+set autoflag 1
+set mailmess 1
+set automail 1
+set pgn 0
+set shout 0
+set seek 0
+set bell 0
+set cshout 0
+set tshout 0
+-ch 4
+-ch 53
+-ch 50
+-ch 1
+-ch 2
+set kibitz 0
+set f1 assesswin >= 1
+set f2 private = 0
+set f3 registered = 1
+set f4 ratign > 1500
+set formula f1 & f2 & f3 & f4
+set 1 Engine: Stockfish 2.0.1 www.stockfishchess.com
+set 2 Hardware: 2.4 GHz Intel Core 2 Duo, 1 GB 667 MHz DDR2 SDRAM
+set 3 Software: Mac OS X Version 10.6.6, perl v5.10.0 built for darwin-thread-multi-2level, Timeseal 1
+set 4 Owner: WilhelmTell
+set 5
+set 6
+set 7
+set 8
+set 9
+set 10
++cen windgambit
++noplay windgambit
+finger
