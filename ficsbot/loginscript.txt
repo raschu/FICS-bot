@@ -21,15 +21,7 @@ set f2 private = 0
 set f3 registered = 1
 set f4 ratign > 1500
 set formula f1 & f2 & f3 & f4
-set 2 Hardware: 2.4 GHz Intel Core 2 Duo, 1 GB 667 MHz DDR2 SDRAM
-set 3 Software: Mac OS X Version 10.6.6, perl v5.10.0 built for darwin-thread-multi-2level, Timeseal 1
-set 4 Owner: WilhelmTell
-set 5
-set 6
-set 7
-set 8
-set 9
-set 10
+set 1 Owner: WilhelmTell
 +cen windgambit
 +noplay windgambit
 finger
