@@ -292,8 +292,8 @@ sub convs12tofen {
 		$reihe = "d" if $doublepawnmove == 3;
 		$reihe = "e" if $doublepawnmove == 4;
 		$reihe = "f" if $doublepawnmove == 5;
-		$reihe = "h" if $doublepawnmove == 6;
-		$reihe = "g" if $doublepawnmove == 7;
+		$reihe = "g" if $doublepawnmove == 6;
+		$reihe = "h" if $doublepawnmove == 7;
 		
 		$doublepawnmove = "$reihe"."$line";
 	}
