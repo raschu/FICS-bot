@@ -8,7 +8,7 @@ use Config::IniFiles;
 
 my $cfg = new Config::IniFiles( -file => "./bot.ini" );
 
-my $VERSION = "1.0.10";
+my $VERSION = "1.0.11";
 
 my $timeseal = $cfg->val('Globals','Timeseal');
 my $engine   = $cfg->val('Globals','Engine');
@@ -105,7 +105,7 @@ while(<TSReader>) { #Main Loop
 		print S "$seek3\n";
 		next;
 	}	
-	if ($lastLine =~ m/Ymy opponent has aborted/ or $lastLine =~ m/lost connection and too few moves; game aborted/) {
+	if ($lastLine =~ m/Your opponent has aborted/ or $lastLine =~ m/lost connection and too few moves; game aborted/) {
 		print S "$seek1\n";
 		print S "$seek2\n";
 		print S "$seek3\n";
