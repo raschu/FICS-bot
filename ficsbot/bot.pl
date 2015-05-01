@@ -8,7 +8,7 @@ use Config::IniFiles;
 
 my $cfg = new Config::IniFiles( -file => "./bot.ini" );
 
-my $VERSION = "1.0.11";
+my $VERSION = "1.0.12";
 
 my $timeseal = $cfg->val('Globals','Timeseal');
 my $engine   = $cfg->val('Globals','Engine');
@@ -236,7 +236,7 @@ sub startengine {
 		if ($readercnt == 0) {
 			$engineinfo = $_;
 			$engineinfo =~ s/\n|\r//g;
-			print S "set 1 Engine: $engineinfo\n";
+			print S "set 4 Engine: $engineinfo\n";
 			$readercnt++;
 		}
 		
