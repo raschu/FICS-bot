@@ -41,7 +41,7 @@ foreach (@loginscript) {
 }
 print S "set interface $engine (Perl: $perlversion  OS: $osstring  Host: $machine)\n";
 print S "set 1 interface $engine (Perl: $perlversion  OS: $osstring  Host: $machine)\n";
-print S "set 2 https://github.com/raschu/FICS-bot\n";
+print S "set 2 https://github.com/raschu/UCI-FICS-bot\n";
 print S "$seek1\n";
 print S "$seek2\n";
 print S "$seek3\n";
@@ -73,7 +73,7 @@ while(<TSReader>) { #Main Loop
 		print "My Handle is $myhandle\n";
 		next;
 	}
-	if ($lastLine =~ m/<12>/) { #style 12 wurde ausgeführt
+	if ($lastLine =~ m/<12>/) { #style 12 wurde ausgefÃ¼hrt
 		my @styledata = split(/ /, $lastLine);
 		my $colortomove = lc($styledata[9]);
 		makeamove($lastLine) if $mycolor eq $colortomove;
