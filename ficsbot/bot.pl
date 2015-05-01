@@ -8,7 +8,7 @@ use Config::IniFiles;
 
 our $cfg = new Config::IniFiles( -file => "./bot.ini" );
 
-our $VERSION = "1.0.8";
+our $VERSION = "1.0.9";
 
 our $timeseal = $cfg->val('Globals','Timeseal');
 our $engine   = $cfg->val('Globals','Engine');
