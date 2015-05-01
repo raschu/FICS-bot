@@ -40,6 +40,8 @@ foreach (@loginscript) {
 	print S "$_\n";
 }
 print S "set interface $engine (Perl: $perlversion  OS: $osstring  Host: $machine)\n";
+print S "set 1 interface $engine (Perl: $perlversion  OS: $osstring  Host: $machine)\n";
+print S "set 2 https://github.com/raschu/FICS-bot\n";
 print S "$seek1\n";
 print S "$seek2\n";
 print S "$seek3\n";
