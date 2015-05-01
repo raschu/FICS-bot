@@ -31,7 +31,7 @@ my $readercnt = 0;
 
 my $tspid = open2(*TSReader,*S,$timeseal);
 
-open(LOGIN,"./FICSlogin.txt") or die ("cannot open: $!");
+open(LOGIN,"./loginscript.txt") or die ("cannot open: $!");
 my @loginscript = <LOGIN>;
 close(LOGIN);
 
