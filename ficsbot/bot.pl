@@ -6,32 +6,30 @@ use IPC::Open2;
 use Term::ANSIColor;
 use Config::IniFiles;
 
-our $cfg = new Config::IniFiles( -file => "./bot.ini" );
+my $cfg = new Config::IniFiles( -file => "./bot.ini" );
 
-our $VERSION = "1.0.9";
+my $VERSION = "1.0.10";
 
-our $timeseal = $cfg->val('Globals','Timeseal');
-our $engine   = $cfg->val('Globals','Engine');
-our $operator = $cfg->val('Globals','Operator');
-our $maxgames = $cfg->val('Globals','MaxGames');; #Anzahl Spiele, dann gibts einen Logout
-our $seek1    = $cfg->val('Globals','Seek1');
-our $seek2    = $cfg->val('Globals','Seek2');
-our $seek3    = $cfg->val('Globals','Seek3');
+my $timeseal = $cfg->val('Globals','Timeseal');
+my $engine   = $cfg->val('Globals','Engine');
+my $operator = $cfg->val('Globals','Operator');
+my $maxgames = $cfg->val('Globals','MaxGames');; #Anzahl Spiele, dann gibts einen Logout
+my $seek1    = $cfg->val('Globals','Seek1');
+my $seek2    = $cfg->val('Globals','Seek2');
+my $seek3    = $cfg->val('Globals','Seek3');
 
-#our $engine = "/Users/ralph/Library/SchachEngines/toga/TogaII-MacIntel";
-#our $engine = "/Users/ralph/Library/SchachEngines/fruit/fruit221";
-#our $timeseal = "/Users/ralph/Desktop/Groubian/timeseal freechess.org 5000";
+my $myhandle = "";
+my $mycolor;
+my $movecounter = 0;
+my $playedgames = 0;
+my $quit = 0;
+my $machine = hostname();
+my $perlversion = sprintf "%vd", $^V;
+my $osstring = $^O;
+my $engineinfo;
+my $readercnt = 0;
 
-our $myhandle = "";
-our $mycolor;
-our $movecounter = 0;
-our $playedgames = 0;
-our $quit = 0;
-our $machine = hostname();
-our $perlversion = sprintf "%vd", $^V;
-our $osstring = $^O;
-
-our $tspid = open2(*TSReader,*S,$timeseal);
+my $tspid = open2(*TSReader,*S,$timeseal);
 
 open(LOGIN,"./FICSlogin.txt") or die ("cannot open: $!");
 my @loginscript = <LOGIN>;
@@ -107,7 +105,7 @@ while(<TSReader>) { #Main Loop
 		print S "$seek3\n";
 		next;
 	}	
-	if ($lastLine =~ m/Your opponent has aborted/ or $lastLine =~ m/lost connection and too few moves; game aborted/) {
+	if ($lastLine =~ m/Ymy opponent has aborted/ or $lastLine =~ m/lost connection and too few moves; game aborted/) {
 		print S "$seek1\n";
 		print S "$seek2\n";
 		print S "$seek3\n";
@@ -136,6 +134,7 @@ sub makeamove {
 	print Engine "position fen $fen\n";
 	#print Engine "go movetime 10000\n";
 	print Engine "go wtime $wtime btime $btime winc $winc binc $binc\n";
+
 	while (<Reader>) {
 		my $line = $_;
 		#chop($line);
@@ -231,8 +230,15 @@ sub tellunknown {
 sub startengine {
 #-----------------------------------------------	
 	my $count = 0;
-	our $pid = open2(*Reader,*Engine,$engine);
+	my $pid = open2(*Reader,*Engine,$engine);
 	while (<Reader>) {
+		
+		if ($readercnt == 0) {
+			$engineinfo = $_;
+			$engineinfo =~ s/\n|\r//g;
+			print S "set 1 Engine: $engineinfo\n";
+			$readercnt++;
+		}
 		
 		my $line = $_;
 		#chop($line);
